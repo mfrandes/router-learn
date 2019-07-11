@@ -28,7 +28,7 @@ export class ServerComponent implements OnInit {
   }
 
   onEdit(){
-    this.touter.navigate(['edit'], {relativeTo: this.route})
+    this.touter.navigate(['edit'], {relativeTo: this.route, queryParamsHandling: 'preserve'})
   }
 
 }
