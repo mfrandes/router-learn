@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ServersService } from '../servers.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-server',
@@ -12,7 +12,8 @@ export class ServerComponent implements OnInit {
   server: {id: number, name: string, status: string};
 
   constructor(private serversService: ServersService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private touter: Router) { }
 
   ngOnInit() {
     //+ converts id from sreing to search for a number
@@ -24,6 +25,10 @@ export class ServerComponent implements OnInit {
       }
     )
     
+  }
+
+  onEdit(){
+    this.touter.navigate(['edit'], {relativeTo: this.route})
   }
 
 }
