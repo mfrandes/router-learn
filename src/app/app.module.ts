@@ -11,6 +11,7 @@ import { UserComponent } from './users/user/user.component';
 import { EditServerComponent } from './servers/edit-server/edit-server.component';
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 const appRouts: Routes = [
@@ -22,7 +23,11 @@ const appRouts: Routes = [
   { path: 'servers', component: ServersComponent, children: [
     { path: ':id', component: ServerComponent},
     { path: ':id/edit', component: EditServerComponent},
+    //{path: '**', redirectTo: '/not-found'}
   ]},
+  {path: 'not-found', component: PageNotFoundComponent},
+  {path: '**', redirectTo: '/not-found'}
+
   
 ];
 
@@ -34,7 +39,8 @@ const appRouts: Routes = [
     ServersComponent,
     UserComponent,
     EditServerComponent,
-    ServerComponent
+    ServerComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
